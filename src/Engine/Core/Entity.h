@@ -5,7 +5,9 @@
 #include "./Component.h"
 
 #include <vector>
+#include <map>
 #include <string>
+#include <iostream>
 
 class EntityManager;
 class Component;
@@ -16,6 +18,7 @@ class Entity {
         std::string m_id;
         bool m_isActive;
         std::vector<Component*> m_components;
+        std::map<const std::type_info*, Component*> m_componentMap; 
     public:
         Entity(EntityManager& manager);
         Entity(EntityManager& manager, std::string id);
@@ -30,20 +33,20 @@ class Entity {
         T& AddComponent(TArgs&&... args) {
             T* newComponent(new T(std::forward<TArgs>(args) ...));
             m_components.emplace_back(newComponent);
+            m_componentMap[&typeid(*newComponent)] = newComponent;
+            newComponent->entity = this;
             newComponent->Initialize();
             return *newComponent;
         }
 
         template<typename T>
         T* GetComponent() {
-            for(auto& component: m_components) {
-                T* typedComponent = nullptr;
-                if (T* typedComponent = dynamic_cast<T*>(component)) {
-                    return (typedComponent);
-                }
-            }
+            return static_cast<T*>(m_componentMap[&typeid(T)]);
+        }
 
-            return nullptr;
+        template<typename T>
+        bool HasComponent() {
+            return m_componentMap[&typeid(T)]!=nullptr;
         }
 };
 

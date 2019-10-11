@@ -5,7 +5,9 @@
 
 #include <string>
 
+EntityManager* Engine::entityManager = new EntityManager();
 SDL_Renderer* Engine::renderer;
+AssetManager* Engine::assetManager = new AssetManager(entityManager);
 
 Engine::Engine(Game *game):m_game(game) {
     this->m_isRunning = false;
@@ -33,7 +35,6 @@ void Engine::Initialize(int width, int height) {
         std::cerr << "Error creating SDL renderer." << std::endl;
         return;
     }
-    m_entityManager = new EntityManager();
 
     m_isRunning = true;
     return;
@@ -69,14 +70,14 @@ void Engine::Update() {
     // Sets the new ticks for the current frame to be used in the next pass
     ticksLastFrame = SDL_GetTicks();
 
-    m_entityManager->Update(deltaTime);
+    entityManager->Update(deltaTime);
 }
 
 void Engine::Render() {
     SDL_SetRenderDrawColor(renderer, 21, 21, 21, 255);
     SDL_RenderClear(renderer);
 
-    m_entityManager->Render();
+    entityManager->Render();
 
     SDL_RenderPresent(renderer);
 }
@@ -85,8 +86,4 @@ void Engine::Destroy() {
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(m_window);
     SDL_Quit();
-}
-
-Entity& Engine::CreateEntity(std::string entityId) {
-    return m_entityManager->AddEntity(entityId);
 }

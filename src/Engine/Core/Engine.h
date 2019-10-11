@@ -6,23 +6,27 @@
 #include <SDL2/SDL_ttf.h>
 
 #include "./EntityManager.h"
+#include "./AssetManager.h"
 #include "./Game.h"
 
 class EntityManager;
+class AssetManager;
 class Game;
 
 class Engine {
     private:
         bool m_isRunning;
         SDL_Window *m_window;
-        EntityManager *m_entityManager;
         Game *m_game;
     public:
         Engine(Game *game);
         ~Engine();
 
-        int ticksLastFrame = 0;
+        static EntityManager *entityManager;
         static SDL_Renderer *renderer;
+        static AssetManager *assetManager;
+
+        int ticksLastFrame = 0;
         bool IsRunning() const { return m_isRunning; }
 
         void Initialize(int width, int height);
@@ -33,9 +37,6 @@ class Engine {
         void Quit() {
             m_isRunning = false;
         }
-
-        EntityManager* GetEntityManager() const { return m_entityManager; }
-        Entity& CreateEntity(std::string entityId);
 };
 
 #endif

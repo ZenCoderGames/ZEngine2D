@@ -1,16 +1,20 @@
 #include "./TestGame.h"
 
 #include "./Engine/Components/TransformComponent.h"
+#include "./Engine/Components/SpriteComponent.h"
 
 TestGame::TestGame() {
     projectile = nullptr;
 }
 
 void TestGame::Initialize() {
-    std::cout<<"Hello Game";
+    // Load assets
+    Engine::assetManager->AddTexture("tank", "./assets/images/tank-big-right.png");
 
-    projectile = &(m_engine->CreateEntity("projectile"));
+    // Create projectile
+    projectile = &(Engine::entityManager->AddEntity("projectile"));
     projectile->AddComponent<TransformComponent>(0, 0, 20, 20, 32, 32, 1);
+    projectile->AddComponent<SpriteComponent>("tank");
 }
 
 void TestGame::ProcessInput(SDL_Event event) {

@@ -1,5 +1,5 @@
-#ifndef TRANSFORMCOMPONENT_H
-#define TRANSFORMCOMPONENT_H
+#ifndef TRANSFORM_COMPONENT_H
+#define TRANSFORM_COMPONENT_H
 
 #include "../Core/EntityManager.h"
 #include "../../../lib/glm/glm.hpp"
@@ -34,17 +34,6 @@ class TransformComponent: public Component {
         void Update(float deltaTime) override {
             position.x += velocity.x * deltaTime;
             position.y += velocity.y * deltaTime;
-        }
-
-        void Render() override {
-            SDL_Rect transformRectangle = {
-                (int) position.x,
-                (int) position.y,
-                width,
-                height
-            };
-            SDL_SetRenderDrawColor(Engine::renderer, 255, 255, 255, 255);
-            SDL_RenderFillRect(Engine::renderer, &transformRectangle);
         }
 };
 
