@@ -2,6 +2,7 @@
 #define ENTITY_MANAGER_H
 
 #include "./Entity.h"
+#include "../Constants.h"
 
 #include <vector>
 #include <string>
@@ -17,7 +18,7 @@ class EntityManager {
         bool IsEmpty() const { return m_entities.size()==0; }
         void Clear();
 
-        Entity& AddEntity(std::string entityId);
+        Entity& AddEntity(std::string entityId, LAYER layer);
 };
 
 #endif

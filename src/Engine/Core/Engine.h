@@ -8,6 +8,8 @@
 #include "./EntityManager.h"
 #include "./AssetManager.h"
 #include "./Game.h"
+#include "./CameraManager.h"
+#include "./CollisionManager.h"
 
 class EntityManager;
 class AssetManager;
@@ -25,6 +27,8 @@ class Engine {
         static EntityManager *entityManager;
         static SDL_Renderer *renderer;
         static AssetManager *assetManager;
+        static CameraManager *cameraManager;
+        static CollisionManager *collisionManager;
 
         int ticksLastFrame = 0;
         bool IsRunning() const { return m_isRunning; }

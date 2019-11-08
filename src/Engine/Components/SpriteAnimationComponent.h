@@ -5,6 +5,7 @@
 #include "./SpriteComponent.h"
 #include <SDL2/SDL.h>
 #include <map>
+#include "../Utils/Macros.h"
 
 class SpriteAnimationComponent: public Component {
     private:
@@ -14,7 +15,9 @@ class SpriteAnimationComponent: public Component {
         std::string m_animGroupName;
         Animation* m_currentAnim;
         unsigned int m_currentIdx;
-        bool m_animate;
+        bool m_isPlaying;
+        bool m_isLooping;
+        Uint32 m_animStartTime;
     public:
         SpriteAnimationComponent(int totalFrames, int speed, bool isDirectional=false) {
             if(isDirectional) {
@@ -37,30 +40,54 @@ class SpriteAnimationComponent: public Component {
             ASSERT(!(entity->HasComponent<SpriteComponent>()), "Sprite Animation component needs a Sprite Component on the entity.");
             m_spriteComponent = entity->GetComponent<SpriteComponent>();
 
-            m_animate = false;
+            m_isPlaying = false;
+            m_currentAnim = nullptr;
             m_currentIdx = 0;
         }
 
-        void Play() {
+        void Play(bool isLooping) {
             m_currentAnim = m_animationMap["Default"];
-            m_animate = true;
+            m_isPlaying = true;
+            m_isLooping = isLooping;
+            m_animStartTime = SDL_GetTicks();
         }
 
-        void Play(std::string animName) {
+        void Play(std::string animName, bool isLooping) {
             m_currentAnim = m_animationMap[animName];
+            ASSERT(m_currentAnim==nullptr, STR_CONCAT("Invalid anim id: ", animName));
             m_currentIdx = m_currentAnim->index;
-            m_animate = true;
+            m_isPlaying = true;
+            m_isLooping = isLooping;
+            m_animStartTime = SDL_GetTicks();
+        }
+
+        bool IsPlaying() {
+            return m_isPlaying;
+        }
+
+        bool IsPlaying(std::string animName) {
+            return m_currentAnim!=nullptr && m_currentAnim->name == animName && m_isPlaying;
         }
 
         void Stop() {
-            m_animate = false;
+            m_isPlaying = false;
         }
 
         void Update(float deltaTime) override {
-            if(m_animate) {
-                int x = m_spriteComponent->GetWidth() * static_cast<int>((SDL_GetTicks() / m_currentAnim->speed) % m_currentAnim->totalFrames);
+            if(m_isPlaying) {
+                int frameCount = (SDL_GetTicks()-m_animStartTime) / m_currentAnim->speed;
+                // horizontal represents the animated frames
+                int x = m_spriteComponent->GetWidth() * static_cast<int>(frameCount % m_currentAnim->totalFrames);
+
+                // vertical represents the section of the sprite sheet
                 int y = m_currentIdx * m_spriteComponent->GetHeight();
                 m_spriteComponent->ModifySrcPos(x, y);
+
+                if(!m_isLooping) {
+                    if(frameCount>=m_currentAnim->totalFrames) {
+                        m_isPlaying = false;
+                    }
+                }
             }
         }
 };

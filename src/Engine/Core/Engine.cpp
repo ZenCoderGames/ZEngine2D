@@ -8,6 +8,8 @@
 EntityManager* Engine::entityManager = new EntityManager();
 SDL_Renderer* Engine::renderer;
 AssetManager* Engine::assetManager = new AssetManager(entityManager);
+CameraManager* Engine::cameraManager = new CameraManager(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
+CollisionManager* Engine::collisionManager = new CollisionManager();
 
 Engine::Engine(Game *game):m_game(game) {
     this->m_isRunning = false;
@@ -16,6 +18,10 @@ Engine::Engine(Game *game):m_game(game) {
 void Engine::Initialize(int width, int height) {
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
         std::cerr << "Error initializing SDL." << std::endl;
+        return;
+    }
+    if (TTF_Init() != 0) {
+        std::cerr << "Error initializing SDL TTF" << std::endl;
         return;
     }
     m_window = SDL_CreateWindow(
@@ -71,6 +77,10 @@ void Engine::Update() {
     ticksLastFrame = SDL_GetTicks();
 
     entityManager->Update(deltaTime);
+
+    m_game->Update(deltaTime);
+
+    collisionManager->Update();
 }
 
 void Engine::Render() {

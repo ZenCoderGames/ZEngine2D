@@ -1,5 +1,4 @@
 #include "./TextureManager.h"
-
 #include "../Utils/Macros.h"
 
 SDL_Texture* TextureManager::LoadTexture(const char* filePath) {

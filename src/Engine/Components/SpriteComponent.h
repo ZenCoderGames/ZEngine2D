@@ -5,6 +5,8 @@
 #include "../Core/TextureManager.h"
 #include "./TransformComponent.h"
 
+#include <string>
+
 #include "../Utils/Macros.h"
 
 class SpriteComponent: public Component {
@@ -15,19 +17,19 @@ class SpriteComponent: public Component {
         SDL_Rect m_dst;
         int m_width;
         int m_height;
+        bool m_isFixed;
 
     public:
         SDL_RendererFlip flip = SDL_FLIP_NONE;
 
-        SpriteComponent(const char* textureId, int width, int height) {
+        SpriteComponent(std::string textureId, int width, int height, bool isFixed=false) {
             m_texture = Engine::assetManager->GetTexture(textureId);
             m_width = width;
             m_height = height;
+            m_isFixed = isFixed;
         }
 
-        ~SpriteComponent() {
-
-        }
+        ~SpriteComponent() { }
 
         void Initialize() override {
             ASSERT(!(entity->HasComponent<TransformComponent>()), "Sprite component needs a Transform Component on the entity.");
@@ -40,8 +42,8 @@ class SpriteComponent: public Component {
         }
 
         void Update(float deltaTime) override {
-            m_dst.x = static_cast<int>(m_transformComponent->position.x);
-            m_dst.y = static_cast<int>(m_transformComponent->position.y);
+            m_dst.x = static_cast<int>(m_transformComponent->position.x) - (m_isFixed ? 0: Engine::cameraManager->GetPosX());
+            m_dst.y = static_cast<int>(m_transformComponent->position.y) - (m_isFixed ? 0: Engine::cameraManager->GetPosY());
             m_dst.w = m_width * m_transformComponent->scale;
             m_dst.h = m_height * m_transformComponent->scale;
         }

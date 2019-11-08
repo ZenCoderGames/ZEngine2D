@@ -4,7 +4,7 @@
 int main(int argc, char *args[]) {
     
     TestGame *game = new TestGame();
-    game->Run();
+    game->Start();
 
     return 0;
 }

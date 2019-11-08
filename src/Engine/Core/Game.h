@@ -11,8 +11,10 @@ class Game {
         Engine *m_engine;
         virtual void Initialize() {};
     public:
-        void Run();
+        void Start();
         virtual void ProcessInput(SDL_Event event);
+        virtual void Update(float deltaTime) {}
+        void Quit();
 };
 
 #endif

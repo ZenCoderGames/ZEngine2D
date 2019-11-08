@@ -12,10 +12,10 @@ class TransformComponent: public Component {
         glm::vec2 velocity;
         int scale;
 
-        TransformComponent(int posX, int posY, int velX, int velY, int s) {
+        TransformComponent(int posX, int posY, int velX, int velY, int scale) {
             position = glm::vec2(posX, posY);
             velocity = glm::vec2(velX, velY);
-            scale = s;
+            this->scale = scale;
         }
 
         void Update(float deltaTime) override {

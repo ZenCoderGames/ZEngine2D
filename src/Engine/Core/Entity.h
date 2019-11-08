@@ -3,6 +3,7 @@
 
 #include "./EntityManager.h"
 #include "./Component.h"
+#include "../Constants.h"
 
 #include <vector>
 #include <map>
@@ -18,16 +19,19 @@ class Entity {
         std::string m_id;
         bool m_isActive;
         std::vector<Component*> m_components;
-        std::map<const std::type_info*, Component*> m_componentMap; 
+        std::map<const std::type_info*, Component*> m_componentMap;
+        LAYER m_layer;
     public:
-        Entity(EntityManager& manager);
-        Entity(EntityManager& manager, std::string id);
+        Entity(EntityManager& manager, LAYER layer);
+        Entity(EntityManager& manager, std::string id, LAYER layer);
 
         void Initialize();
         void Update(float deltaTime);
         void Render();
         void Destroy();
         bool IsActive() const { return m_isActive; }
+        LAYER GetLayer() const { return m_layer; }
+        std::string GetId() { return m_id; }
 
         template<typename T, typename... TArgs>
         T& AddComponent(TArgs&&... args) {
@@ -47,6 +51,13 @@ class Entity {
         template<typename T>
         bool HasComponent() {
             return m_componentMap[&typeid(T)]!=nullptr;
+        }
+
+        void PrintAllComponents() const {
+            std::cout<<"Components:"<<std::endl;
+            for(auto component: m_componentMap) {
+                std::cout<<component.first->name() << std::endl;
+            }
         }
 };
 

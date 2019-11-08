@@ -1,10 +1,12 @@
 #include "./Entity.h"
 
-Entity::Entity(EntityManager& manager): m_Manager(manager) {
+#include <iostream>
+
+Entity::Entity(EntityManager& manager, LAYER layer): m_Manager(manager), m_layer(layer) {
     this->m_isActive = true;
 }
 
-Entity::Entity(EntityManager& manager, std::string id): m_Manager(manager), m_id(id) {
+Entity::Entity(EntityManager& manager, std::string id, LAYER layer): m_Manager(manager), m_id(id), m_layer(layer) {
     this->m_isActive = true;
 }
 

@@ -1,6 +1,6 @@
 #include "./Game.h"
 
-void Game::Run() {
+void Game::Start() {
     m_engine = new Engine(this);  
     m_engine->Initialize(WINDOW_WIDTH, WINDOW_HEIGHT);
     Initialize();
@@ -16,11 +16,15 @@ void Game::ProcessInput(SDL_Event event) {
     switch (event.type) {
         case SDL_KEYDOWN: {
             if (event.key.keysym.sym == SDLK_ESCAPE) {
-                m_engine->Quit();
+                Quit();
             }
         }
         default: {
             break;
         }
     }
+}
+
+void Game::Quit() {
+    m_engine->Quit();
 }

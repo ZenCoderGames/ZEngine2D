@@ -70,7 +70,9 @@
 			"variant": "cpp",
 			"*.tcc": "cpp",
 			"cinttypes": "cpp",
-			"hashtable": "cpp"
+			"hashtable": "cpp",
+			"fstream": "cpp",
+			"__functional_03": "cpp"
 		}
 	}
 }
