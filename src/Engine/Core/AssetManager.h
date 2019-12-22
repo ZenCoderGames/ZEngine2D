@@ -5,7 +5,7 @@
 #include <string>
 #include "./TextureManager.h"
 #include "./FontManager.h"
-#include <SDL2/SDL_ttf.h>
+#include <SDL_ttf.h>
 #include "./EntityManager.h"
 
 class AssetManager {

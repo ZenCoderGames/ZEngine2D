@@ -22,4 +22,7 @@ void Entity::Render() {
 
 void Entity::Destroy() {
     this->m_isActive = false;
+
+    for(auto& component: m_components)
+        component->Destroy();
 }

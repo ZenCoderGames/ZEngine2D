@@ -43,6 +43,13 @@ class Entity {
             return *newComponent;
         }
 
+        void AddComponent(Component* newComponent) {
+            m_components.emplace_back(newComponent);
+            m_componentMap[&typeid(*newComponent)] = newComponent;
+            newComponent->entity = this;
+            newComponent->Initialize();
+        }
+
         template<typename T>
         T* GetComponent() {
             return static_cast<T*>(m_componentMap[&typeid(T)]);

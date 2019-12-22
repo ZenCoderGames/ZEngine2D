@@ -1,5 +1,9 @@
 #include "./Game.h"
 
+void Game::Initialize() {
+    m_lua.open_libraries(sol::lib::base, sol::lib::os, sol::lib::math);
+}
+
 void Game::Start() {
     m_engine = new Engine(this);  
     m_engine->Initialize(WINDOW_WIDTH, WINDOW_HEIGHT);

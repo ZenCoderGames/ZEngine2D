@@ -3,13 +3,15 @@
 
 #include "../Constants.h"
 #include "./Engine.h"
+#include "../../../lib/lua/sol.hpp"
 
 class Engine;
 
 class Game {
     protected:
         Engine *m_engine;
-        virtual void Initialize() {};
+        sol::state m_lua;
+        virtual void Initialize();
     public:
         void Start();
         virtual void ProcessInput(SDL_Event event);

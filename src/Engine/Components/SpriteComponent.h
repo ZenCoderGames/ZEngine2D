@@ -22,14 +22,23 @@ class SpriteComponent: public Component {
     public:
         SDL_RendererFlip flip = SDL_FLIP_NONE;
 
-        SpriteComponent(std::string textureId, int width, int height, bool isFixed=false) {
+        SpriteComponent(std::string textureId, int width, int height, bool isFixed=false, bool flipX=false, bool flipY=false) {
             m_texture = Engine::assetManager->GetTexture(textureId);
             m_width = width;
             m_height = height;
             m_isFixed = isFixed;
+            if(flipX)
+                flip = static_cast<SDL_RendererFlip>(flip | SDL_FLIP_HORIZONTAL);
+            if(flipY)
+                flip = static_cast<SDL_RendererFlip>(flip | SDL_FLIP_VERTICAL);
         }
 
-        ~SpriteComponent() { }
+        static SpriteComponent* Generate(sol::table paramsTable) {
+            SpriteComponent* component = new SpriteComponent(paramsTable["textureAssetId"], paramsTable["width"],
+                                                             paramsTable["height"], paramsTable["isFixed"],
+                                                             paramsTable["flipX"], paramsTable["flipY"]);
+            return component;
+        }
 
         void Initialize() override {
             ASSERT(!(entity->HasComponent<TransformComponent>()), "Sprite component needs a Transform Component on the entity.");

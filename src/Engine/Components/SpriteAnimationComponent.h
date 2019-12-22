@@ -3,7 +3,7 @@
 
 #include "../Core/Animation.h"
 #include "./SpriteComponent.h"
-#include <SDL2/SDL.h>
+#include <SDL.h>
 #include <map>
 #include "../Utils/Macros.h"
 
@@ -34,6 +34,11 @@ class SpriteAnimationComponent: public Component {
                 Animation *defaultAnimation = new Animation("Default", 0, totalFrames, speed);
                 m_animationMap.emplace(defaultAnimation->name, defaultAnimation);
             }
+        }
+
+        static SpriteAnimationComponent* Generate(sol::table paramsTable) {
+            SpriteAnimationComponent* component = new SpriteAnimationComponent(paramsTable["totalFrames"], paramsTable["animationSpeed"], paramsTable["isDirectional"]);
+            return component;
         }
 
         void Initialize() override {

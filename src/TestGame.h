@@ -12,7 +12,7 @@ class TestGame:public Game {
         void Initialize() override;
     public:
         Map *map;
-        Entity *chopper, *tank, *heliport;
+        Entity *chopper, *tank, *heliport, *projectile;
         TransformComponent *chopperTransform;
         SpriteAnimationComponent *chopperAnimation;
         glm::vec2 inputHor, inputVert;

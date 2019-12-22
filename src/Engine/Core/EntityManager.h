@@ -5,6 +5,7 @@
 #include "../Constants.h"
 
 #include <vector>
+#include <map>
 #include <string>
 
 class Entity;
@@ -12,6 +13,7 @@ class Entity;
 class EntityManager {
     private:
         std::vector<Entity*> m_entities;
+        std::map<std::string, Entity*> m_entityMap;
     public:
         void Update(float deltaTime);
         void Render();
@@ -19,6 +21,8 @@ class EntityManager {
         void Clear();
 
         Entity& AddEntity(std::string entityId, LAYER layer);
+        Entity* GetEntity(std::string entityId);
+        std::vector<Entity*> GetEntitiesByLayer(LAYER layer) const;
 };
 
 #endif

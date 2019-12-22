@@ -1,7 +1,7 @@
 #ifndef CONSTANTS_H
 #define CONSTANTS_H
 
-#include <SDL2/SDL.h>
+#include <SDL.h>
 
 const unsigned int WINDOW_WIDTH = 800;
 const unsigned int WINDOW_HEIGHT = 600;
@@ -19,7 +19,7 @@ enum LAYER {
     LAYER_OBSTACLE
 };
 
-const unsigned int TOTAL_LAYERS = 5;
+const unsigned int TOTAL_LAYERS = 6;
 
 const SDL_Color COLOR_WHITE = {255, 255, 255, 255};
 

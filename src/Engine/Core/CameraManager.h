@@ -1,7 +1,7 @@
 #ifndef CAMERA_MANAGER_H
 #define CAMERA_MANAGER_H
 
-#include <SDL2/SDL.h>
+#include <SDL.h>
 #include "../../../lib/glm/glm.hpp"
 
 class CameraManager {

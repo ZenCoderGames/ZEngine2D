@@ -6,6 +6,7 @@
 #include <map>
 #include <functional>
 #include <iostream>
+#include <algorithm>
 
 class CollisionManager {
     private:
@@ -18,6 +19,10 @@ class CollisionManager {
 
         void RegisterForCollision(Entity* entity, std::function<void(Entity*)> callback) {
             entityEventMap.insert(std::pair<Entity*, std::function<void(Entity*)>>(entity, callback));
+        }
+
+        void UnregisterBoxCollider(BoxCollider* boxCollider) {
+            boxColliderList.erase(std::remove(boxColliderList.begin(), boxColliderList.end(), boxCollider), boxColliderList.end());
         }
 
         void Update() {

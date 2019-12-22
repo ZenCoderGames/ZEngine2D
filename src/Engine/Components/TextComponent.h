@@ -3,7 +3,7 @@
 
 #include "../Core/AssetManager.h"
 #include "../Core/FontManager.h"
-#include <SDL2/SDL_ttf.h>
+#include <SDL_ttf.h>
 
 class TextComponent: public Component {
     private:
