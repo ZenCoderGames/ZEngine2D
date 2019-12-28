@@ -1,0 +1,13 @@
+digraph "SpriteComponent::SpriteComponent"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="SpriteComponent::SpriteComponent",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="SpriteComponent::Generate",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_sprite_component.html#a1b5312b564c0359a856c204da4b5db29"];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="ComponentManager::GetComponent",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_component_manager.html#a05b315bf921099149344d8bc296f6f33"];
+  Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="TestGame::Initialize",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_test_game.html#a19acea3851ab7bfe1980350ca8aeeb43"];
+}

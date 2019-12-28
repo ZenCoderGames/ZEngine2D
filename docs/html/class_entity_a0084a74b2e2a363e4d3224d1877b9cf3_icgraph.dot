@@ -1,0 +1,17 @@
+digraph "Entity::GetComponent"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="Entity::GetComponent",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="BoxColliderComponent\l::Initialize",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_box_collider_component.html#a1696fea736870116974fa8f0738f5aa5"];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="ProjectileComponent\l::Initialize",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_projectile_component.html#a439f60c9371cd1418a639cf7fb6630c3"];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="SpriteAnimationComponent\l::Initialize",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_sprite_animation_component.html#a34af28a9da3a6ad15b7ba630d2f781c6"];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="SpriteComponent::Initialize",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_sprite_component.html#a75435ae880176fea72b456cf60786903"];
+  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="TestGame::Initialize",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_test_game.html#a19acea3851ab7bfe1980350ca8aeeb43"];
+}

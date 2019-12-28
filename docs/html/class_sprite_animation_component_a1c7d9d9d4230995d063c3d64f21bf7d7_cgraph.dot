@@ -1,0 +1,13 @@
+digraph "SpriteAnimationComponent::Update"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="SpriteAnimationComponent\l::Update",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="SpriteComponent::GetWidth",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_sprite_component.html#a9a54f8d1ce2857269f33255f3eac41af"];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="SpriteComponent::GetHeight",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_sprite_component.html#aed70da57561dee3d1be425de7862fbdb"];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="SpriteComponent::ModifySrcPos",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_sprite_component.html#a6fdbbce569206dfad4077e0965176d84"];
+}
