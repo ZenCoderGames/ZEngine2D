@@ -28,4 +28,5 @@ Dependencies:
 The purpose of this engine was to build something from scratch and document the process for
 a younger generation that has grown up with engines like Unity/Unreal/GameMaker etc.
 
-This is for game devs who want to dive a bit deeper and learn how game engines are made.
+This is for game devs who want to dive a bit deeper and learn how game engines work under
+ the hood.
