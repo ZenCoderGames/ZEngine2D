@@ -4,6 +4,8 @@ A simple 2D game engine built on SDL2 that follows the Entity Component system p
 
 Uses Lua as a scripting language.
 
+Documentation: [a link](https://zencodergames.github.io/ZEngine2D/docs/html/index.html)
+
 ------------------------------------------------------------------------------------------
 
 Components:
@@ -20,10 +22,6 @@ Dependencies:
 
 - SDL2
 - Lua
-
-Documentation:
-
-- Doxygen
 
 ------------------------------------------------------------------------------------------
 
