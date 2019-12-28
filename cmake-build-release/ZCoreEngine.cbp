@@ -223,10 +223,10 @@
 		<Unit filename="/Users/srinavinnair/Documents/Development/ZCoreEngine/src/Engine/Core/Game.h">
 			<Option target="ZCoreEngine"/>
 		</Unit>
-		<Unit filename="/Users/srinavinnair/Documents/Development/ZCoreEngine/src/Engine/Core/Map.cpp">
+		<Unit filename="/Users/srinavinnair/Documents/Development/ZCoreEngine/src/Engine/Core/TileMap.cpp">
 			<Option target="ZCoreEngine"/>
 		</Unit>
-		<Unit filename="/Users/srinavinnair/Documents/Development/ZCoreEngine/src/Engine/Core/Map.h">
+		<Unit filename="/Users/srinavinnair/Documents/Development/ZCoreEngine/src/Engine/Core/TileMap.h">
 			<Option target="ZCoreEngine"/>
 		</Unit>
 		<Unit filename="/Users/srinavinnair/Documents/Development/ZCoreEngine/src/Engine/Core/TextureManager.cpp">

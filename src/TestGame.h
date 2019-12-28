@@ -5,13 +5,16 @@
 #include "./Engine/Core/Game.h"
 #include "./Engine/Components/TransformComponent.h"
 #include "./Engine/Components/SpriteAnimationComponent.h"
-#include "./Engine/Core/Map.h"
+#include "Engine/Core/TileMap.h"
 
+//////////////////////////////////////////////////////////////////////////////////////////////////
+/// A simple test game to test out the engine's capabilities
+//////////////////////////////////////////////////////////////////////////////////////////////////
 class TestGame:public Game {
     protected:
         void Initialize() override;
     public:
-        Map *map;
+        TileMap *map;
         Entity *chopper, *tank, *heliport, *projectile;
         TransformComponent *chopperTransform;
         SpriteAnimationComponent *chopperAnimation;

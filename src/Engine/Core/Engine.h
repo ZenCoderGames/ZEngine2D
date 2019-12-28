@@ -15,6 +15,11 @@ class EntityManager;
 class AssetManager;
 class Game;
 
+//////////////////////////////////////////////////////////////////////////////////////////////////
+/// This is the core class that runs the game.\n
+/// Contains Input->Update->Render in that order.\n
+/// Contains all the static managers that are referenced elsewhere.
+//////////////////////////////////////////////////////////////////////////////////////////////////
 class Engine {
     private:
         bool m_isRunning;
@@ -24,7 +29,7 @@ class Engine {
         Engine(Game *game);
         ~Engine();
 
-        static EntityManager *entityManager;
+        static EntityManager *entityManager;   /**< Container for all the entities in the game */
         static SDL_Renderer *renderer;
         static AssetManager *assetManager;
         static CameraManager *cameraManager;

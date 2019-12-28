@@ -57,7 +57,7 @@ void TestGame::Initialize() {
     sol::table levelMap = levelData["map"];
     std::string mapTextureId = levelMap["textureAssetId"];
     std::string mapFile = levelMap["file"];
-    map = new Map(
+    map = new TileMap(
         mapTextureId,
         static_cast<int>(levelMap["scale"]),
         static_cast<int>(levelMap["tileSize"])

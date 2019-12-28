@@ -67,7 +67,7 @@ void Engine::Update() {
     // Wait until 16ms has ellapsed since the last frame
     while (!SDL_TICKS_PASSED(SDL_GetTicks(), ticksLastFrame + FRAME_TARGET_TIME));
     
-    // Delta time is the difference in ticks from last frame converted to secomds
+    // Delta time is the difference in ticks from last frame converted to seconds
     float deltaTime = (SDL_GetTicks() - ticksLastFrame) / 1000.0f;
 
     // Clamp deltaTime to a maximum value

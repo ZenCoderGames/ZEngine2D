@@ -982,7 +982,7 @@ CMakeFiles/ZCoreEngine.dir/src/Engine/Core/Game.cpp.o
  /usr/local/include/lua/lua.h
  /usr/local/include/lua/luaconf.h
  /usr/local/include/lua/lualib.h
-CMakeFiles/ZCoreEngine.dir/src/Engine/Core/Map.cpp.o
+CMakeFiles/ZCoreEngine.dir/src/Engine/Core/TileMap.cpp.o
  /Users/srinavinnair/Documents/Development/ZCoreEngine/lib/glm/common.hpp
  /Users/srinavinnair/Documents/Development/ZCoreEngine/lib/glm/detail/_fixes.hpp
  /Users/srinavinnair/Documents/Development/ZCoreEngine/lib/glm/detail/_swizzle.hpp
@@ -1145,8 +1145,8 @@ CMakeFiles/ZCoreEngine.dir/src/Engine/Core/Map.cpp.o
  /Users/srinavinnair/Documents/Development/ZCoreEngine/src/Engine/Core/EntityManager.h
  /Users/srinavinnair/Documents/Development/ZCoreEngine/src/Engine/Core/FontManager.h
  /Users/srinavinnair/Documents/Development/ZCoreEngine/src/Engine/Core/Game.h
- /Users/srinavinnair/Documents/Development/ZCoreEngine/src/Engine/Core/Map.cpp
- /Users/srinavinnair/Documents/Development/ZCoreEngine/src/Engine/Core/Map.h
+ /Users/srinavinnair/Documents/Development/ZCoreEngine/src/Engine/Core/TileMap.cpp
+ /Users/srinavinnair/Documents/Development/ZCoreEngine/src/Engine/Core/TileMap.h
  /Users/srinavinnair/Documents/Development/ZCoreEngine/src/Engine/Core/TextureManager.h
  /Users/srinavinnair/Documents/Development/ZCoreEngine/src/Engine/Utils/Macros.h
  /usr/local/Cellar/sdl2/2.0.10/include/SDL2/SDL.h
@@ -1582,7 +1582,7 @@ CMakeFiles/ZCoreEngine.dir/src/Main.cpp.o
  /Users/srinavinnair/Documents/Development/ZCoreEngine/src/Engine/Core/EntityManager.h
  /Users/srinavinnair/Documents/Development/ZCoreEngine/src/Engine/Core/FontManager.h
  /Users/srinavinnair/Documents/Development/ZCoreEngine/src/Engine/Core/Game.h
- /Users/srinavinnair/Documents/Development/ZCoreEngine/src/Engine/Core/Map.h
+ /Users/srinavinnair/Documents/Development/ZCoreEngine/src/Engine/Core/TileMap.h
  /Users/srinavinnair/Documents/Development/ZCoreEngine/src/Engine/Core/TextureManager.h
  /Users/srinavinnair/Documents/Development/ZCoreEngine/src/Engine/Utils/Macros.h
  /Users/srinavinnair/Documents/Development/ZCoreEngine/src/Main.cpp
@@ -1808,7 +1808,7 @@ CMakeFiles/ZCoreEngine.dir/src/TestGame.cpp.o
  /Users/srinavinnair/Documents/Development/ZCoreEngine/src/Engine/Core/EntityManager.h
  /Users/srinavinnair/Documents/Development/ZCoreEngine/src/Engine/Core/FontManager.h
  /Users/srinavinnair/Documents/Development/ZCoreEngine/src/Engine/Core/Game.h
- /Users/srinavinnair/Documents/Development/ZCoreEngine/src/Engine/Core/Map.h
+ /Users/srinavinnair/Documents/Development/ZCoreEngine/src/Engine/Core/TileMap.h
  /Users/srinavinnair/Documents/Development/ZCoreEngine/src/Engine/Core/TextureManager.h
  /Users/srinavinnair/Documents/Development/ZCoreEngine/src/Engine/Utils/Macros.h
  /Users/srinavinnair/Documents/Development/ZCoreEngine/src/TestGame.cpp

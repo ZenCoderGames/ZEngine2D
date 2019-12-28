@@ -1,0 +1,21 @@
+digraph "Component"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="Component",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="BoxColliderComponent",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_box_collider_component.html"];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="ProjectileComponent",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_projectile_component.html"];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="SpriteAnimationComponent",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_sprite_animation_component.html"];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="SpriteComponent",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_sprite_component.html"];
+  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="TextComponent",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_text_component.html"];
+  Node1 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="TileComponent",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_tile_component.html"];
+  Node1 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="TransformComponent",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_transform_component.html"];
+}

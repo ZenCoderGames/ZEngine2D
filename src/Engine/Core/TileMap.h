@@ -6,7 +6,7 @@
 
 #include "./Engine.h"
 
-class Map {
+class TileMap {
     private:
         std::string m_textureId;
         int m_tileSize;
@@ -16,8 +16,8 @@ class Map {
 
         void AddTile(int sourceX, int sourceY, int x, int y);
     public:
-        Map(std::string textureId, int scale, int tileSize);
-        ~Map();
+        TileMap(std::string textureId, int scale, int tileSize);
+        ~TileMap();
 
         void LoadData(std::string filePath, int sizeX, int sizeY);
 };

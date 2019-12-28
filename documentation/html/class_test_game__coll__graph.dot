@@ -1,0 +1,30 @@
+digraph "TestGame"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="TestGame",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="Game",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_game.html"];
+  Node3 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_engine" ,fontname="Helvetica"];
+  Node3 [label="Engine",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_engine.html"];
+  Node4 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" cameraManager" ,fontname="Helvetica"];
+  Node4 [label="CameraManager",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_camera_manager.html",tooltip="Basic camera class. "];
+  Node5 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" entityManager" ,fontname="Helvetica"];
+  Node5 [label="EntityManager",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_entity_manager.html"];
+  Node6 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" assetManager" ,fontname="Helvetica"];
+  Node6 [label="AssetManager",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_asset_manager.html",tooltip="This is the container for all assets that are to be used in game. "];
+  Node7 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" collisionManager" ,fontname="Helvetica"];
+  Node7 [label="CollisionManager",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_collision_manager.html",tooltip="Handles all collision behavior. "];
+  Node8 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" chopper\ntank\nprojectile\nheliport" ,fontname="Helvetica"];
+  Node8 [label="Entity",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_entity.html"];
+  Node9 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" chopperAnimation" ,fontname="Helvetica"];
+  Node9 [label="SpriteAnimationComponent",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_sprite_animation_component.html"];
+  Node10 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 [label="Component",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_component.html",tooltip="Base class for all components. "];
+  Node8 -> Node10 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" entity" ,fontname="Helvetica"];
+  Node11 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" map" ,fontname="Helvetica"];
+  Node11 [label="TileMap",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_tile_map.html"];
+  Node12 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" chopperTransform" ,fontname="Helvetica"];
+  Node12 [label="TransformComponent",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_transform_component.html"];
+  Node10 -> Node12 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

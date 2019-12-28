@@ -358,32 +358,32 @@ src/Engine/Core/Game.cpp.s:
 	$(MAKE) -f CMakeFiles/ZCoreEngine.dir/build.make CMakeFiles/ZCoreEngine.dir/src/Engine/Core/Game.cpp.s
 .PHONY : src/Engine/Core/Game.cpp.s
 
-src/Engine/Core/Map.o: src/Engine/Core/Map.cpp.o
+src/Engine/Core/TileMap.o: src/Engine/Core/TileMap.cpp.o
 
-.PHONY : src/Engine/Core/Map.o
+.PHONY : src/Engine/Core/TileMap.o
 
 # target to build an object file
-src/Engine/Core/Map.cpp.o:
-	$(MAKE) -f CMakeFiles/ZCoreEngine.dir/build.make CMakeFiles/ZCoreEngine.dir/src/Engine/Core/Map.cpp.o
-.PHONY : src/Engine/Core/Map.cpp.o
+src/Engine/Core/TileMap.cpp.o:
+	$(MAKE) -f CMakeFiles/ZCoreEngine.dir/build.make CMakeFiles/ZCoreEngine.dir/src/Engine/Core/TileMap.cpp.o
+.PHONY : src/Engine/Core/TileMap.cpp.o
 
-src/Engine/Core/Map.i: src/Engine/Core/Map.cpp.i
+src/Engine/Core/TileMap.i: src/Engine/Core/TileMap.cpp.i
 
-.PHONY : src/Engine/Core/Map.i
+.PHONY : src/Engine/Core/TileMap.i
 
 # target to preprocess a source file
-src/Engine/Core/Map.cpp.i:
-	$(MAKE) -f CMakeFiles/ZCoreEngine.dir/build.make CMakeFiles/ZCoreEngine.dir/src/Engine/Core/Map.cpp.i
-.PHONY : src/Engine/Core/Map.cpp.i
+src/Engine/Core/TileMap.cpp.i:
+	$(MAKE) -f CMakeFiles/ZCoreEngine.dir/build.make CMakeFiles/ZCoreEngine.dir/src/Engine/Core/TileMap.cpp.i
+.PHONY : src/Engine/Core/TileMap.cpp.i
 
-src/Engine/Core/Map.s: src/Engine/Core/Map.cpp.s
+src/Engine/Core/TileMap.s: src/Engine/Core/TileMap.cpp.s
 
-.PHONY : src/Engine/Core/Map.s
+.PHONY : src/Engine/Core/TileMap.s
 
 # target to generate assembly for a file
-src/Engine/Core/Map.cpp.s:
-	$(MAKE) -f CMakeFiles/ZCoreEngine.dir/build.make CMakeFiles/ZCoreEngine.dir/src/Engine/Core/Map.cpp.s
-.PHONY : src/Engine/Core/Map.cpp.s
+src/Engine/Core/TileMap.cpp.s:
+	$(MAKE) -f CMakeFiles/ZCoreEngine.dir/build.make CMakeFiles/ZCoreEngine.dir/src/Engine/Core/TileMap.cpp.s
+.PHONY : src/Engine/Core/TileMap.cpp.s
 
 src/Engine/Core/TextureManager.o: src/Engine/Core/TextureManager.cpp.o
 
@@ -500,9 +500,9 @@ help:
 	@echo "... src/Engine/Core/Game.o"
 	@echo "... src/Engine/Core/Game.i"
 	@echo "... src/Engine/Core/Game.s"
-	@echo "... src/Engine/Core/Map.o"
-	@echo "... src/Engine/Core/Map.i"
-	@echo "... src/Engine/Core/Map.s"
+	@echo "... src/Engine/Core/TileMap.o"
+	@echo "... src/Engine/Core/TileMap.i"
+	@echo "... src/Engine/Core/TileMap.s"
 	@echo "... src/Engine/Core/TextureManager.o"
 	@echo "... src/Engine/Core/TextureManager.i"
 	@echo "... src/Engine/Core/TextureManager.s"

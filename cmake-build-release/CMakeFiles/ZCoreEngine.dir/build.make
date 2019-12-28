@@ -148,18 +148,18 @@ CMakeFiles/ZCoreEngine.dir/src/Engine/Core/Game.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ZCoreEngine.dir/src/Engine/Core/Game.cpp.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/srinavinnair/Documents/Development/ZCoreEngine/src/Engine/Core/Game.cpp -o CMakeFiles/ZCoreEngine.dir/src/Engine/Core/Game.cpp.s
 
-CMakeFiles/ZCoreEngine.dir/src/Engine/Core/Map.cpp.o: CMakeFiles/ZCoreEngine.dir/flags.make
-CMakeFiles/ZCoreEngine.dir/src/Engine/Core/Map.cpp.o: ../src/Engine/Core/Map.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/srinavinnair/Documents/Development/ZCoreEngine/cmake-build-release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/ZCoreEngine.dir/src/Engine/Core/Map.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ZCoreEngine.dir/src/Engine/Core/Map.cpp.o -c /Users/srinavinnair/Documents/Development/ZCoreEngine/src/Engine/Core/Map.cpp
+CMakeFiles/ZCoreEngine.dir/src/Engine/Core/TileMap.cpp.o: CMakeFiles/ZCoreEngine.dir/flags.make
+CMakeFiles/ZCoreEngine.dir/src/Engine/Core/TileMap.cpp.o: ../src/Engine/Core/TileMap.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/srinavinnair/Documents/Development/ZCoreEngine/cmake-build-release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/ZCoreEngine.dir/src/Engine/Core/TileMap.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ZCoreEngine.dir/src/Engine/Core/TileMap.cpp.o -c /Users/srinavinnair/Documents/Development/ZCoreEngine/src/Engine/Core/TileMap.cpp
 
-CMakeFiles/ZCoreEngine.dir/src/Engine/Core/Map.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ZCoreEngine.dir/src/Engine/Core/Map.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/srinavinnair/Documents/Development/ZCoreEngine/src/Engine/Core/Map.cpp > CMakeFiles/ZCoreEngine.dir/src/Engine/Core/Map.cpp.i
+CMakeFiles/ZCoreEngine.dir/src/Engine/Core/TileMap.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ZCoreEngine.dir/src/Engine/Core/TileMap.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/srinavinnair/Documents/Development/ZCoreEngine/src/Engine/Core/TileMap.cpp > CMakeFiles/ZCoreEngine.dir/src/Engine/Core/TileMap.cpp.i
 
-CMakeFiles/ZCoreEngine.dir/src/Engine/Core/Map.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ZCoreEngine.dir/src/Engine/Core/Map.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/srinavinnair/Documents/Development/ZCoreEngine/src/Engine/Core/Map.cpp -o CMakeFiles/ZCoreEngine.dir/src/Engine/Core/Map.cpp.s
+CMakeFiles/ZCoreEngine.dir/src/Engine/Core/TileMap.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ZCoreEngine.dir/src/Engine/Core/TileMap.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/srinavinnair/Documents/Development/ZCoreEngine/src/Engine/Core/TileMap.cpp -o CMakeFiles/ZCoreEngine.dir/src/Engine/Core/TileMap.cpp.s
 
 CMakeFiles/ZCoreEngine.dir/src/Engine/Core/TextureManager.cpp.o: CMakeFiles/ZCoreEngine.dir/flags.make
 CMakeFiles/ZCoreEngine.dir/src/Engine/Core/TextureManager.cpp.o: ../src/Engine/Core/TextureManager.cpp
@@ -209,7 +209,7 @@ ZCoreEngine_OBJECTS = \
 "CMakeFiles/ZCoreEngine.dir/src/Engine/Core/EntityManager.cpp.o" \
 "CMakeFiles/ZCoreEngine.dir/src/Engine/Core/FontManager.cpp.o" \
 "CMakeFiles/ZCoreEngine.dir/src/Engine/Core/Game.cpp.o" \
-"CMakeFiles/ZCoreEngine.dir/src/Engine/Core/Map.cpp.o" \
+"CMakeFiles/ZCoreEngine.dir/src/Engine/Core/TileMap.cpp.o" \
 "CMakeFiles/ZCoreEngine.dir/src/Engine/Core/TextureManager.cpp.o" \
 "CMakeFiles/ZCoreEngine.dir/src/Main.cpp.o" \
 "CMakeFiles/ZCoreEngine.dir/src/TestGame.cpp.o"
@@ -224,7 +224,7 @@ ZCoreEngine: CMakeFiles/ZCoreEngine.dir/src/Engine/Core/Entity.cpp.o
 ZCoreEngine: CMakeFiles/ZCoreEngine.dir/src/Engine/Core/EntityManager.cpp.o
 ZCoreEngine: CMakeFiles/ZCoreEngine.dir/src/Engine/Core/FontManager.cpp.o
 ZCoreEngine: CMakeFiles/ZCoreEngine.dir/src/Engine/Core/Game.cpp.o
-ZCoreEngine: CMakeFiles/ZCoreEngine.dir/src/Engine/Core/Map.cpp.o
+ZCoreEngine: CMakeFiles/ZCoreEngine.dir/src/Engine/Core/TileMap.cpp.o
 ZCoreEngine: CMakeFiles/ZCoreEngine.dir/src/Engine/Core/TextureManager.cpp.o
 ZCoreEngine: CMakeFiles/ZCoreEngine.dir/src/Main.cpp.o
 ZCoreEngine: CMakeFiles/ZCoreEngine.dir/src/TestGame.cpp.o

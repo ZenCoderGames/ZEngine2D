@@ -1312,9 +1312,9 @@ string
 ../../../lib/lua/sol.hpp
 /Users/srinavinnair/Documents/Development/ZCoreEngine/lib/lua/sol.hpp
 
-/Users/srinavinnair/Documents/Development/ZCoreEngine/src/Engine/Core/Map.cpp
-./Map.h
-/Users/srinavinnair/Documents/Development/ZCoreEngine/src/Engine/Core/Map.h
+/Users/srinavinnair/Documents/Development/ZCoreEngine/src/Engine/Core/TileMap.cpp
+./TileMap.h
+/Users/srinavinnair/Documents/Development/ZCoreEngine/src/Engine/Core/TileMap.h
 iostream
 -
 fstream
@@ -1322,7 +1322,7 @@ fstream
 ../Components/TileComponent.h
 /Users/srinavinnair/Documents/Development/ZCoreEngine/src/Engine/Components/TileComponent.h
 
-/Users/srinavinnair/Documents/Development/ZCoreEngine/src/Engine/Core/Map.h
+/Users/srinavinnair/Documents/Development/ZCoreEngine/src/Engine/Core/TileMap.h
 string
 -
 vector
@@ -1381,8 +1381,8 @@ iostream
 /Users/srinavinnair/Documents/Development/ZCoreEngine/src/Engine/Components/TransformComponent.h
 ./Engine/Components/SpriteAnimationComponent.h
 /Users/srinavinnair/Documents/Development/ZCoreEngine/src/Engine/Components/SpriteAnimationComponent.h
-./Engine/Core/Map.h
-/Users/srinavinnair/Documents/Development/ZCoreEngine/src/Engine/Core/Map.h
+./Engine/Core/TileMap.h
+/Users/srinavinnair/Documents/Development/ZCoreEngine/src/Engine/Core/TileMap.h
 
 /usr/local/Cellar/sdl2/2.0.10/include/SDL2/SDL.h
 SDL_main.h
