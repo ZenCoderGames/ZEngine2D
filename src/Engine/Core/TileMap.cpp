@@ -30,7 +30,7 @@ void TileMap::LoadData(std::string filePath, int sizeX, int sizeY) {
 }
 
 void TileMap::AddTile(int sourceX, int sourceY, int x, int y) {
-    Entity* tile = &(Engine::entityManager->AddEntity(std::string("tile_") + std::to_string(x) + std::to_string(y), LAYER_TILE_MAP));
+    Entity* tile = Engine::entityManager->AddEntity(std::string("tile_") + std::to_string(x) + std::to_string(y), LAYER_TILE_MAP);
     tile->AddComponent<TileComponent>(m_textureId, sourceX, sourceY, m_tileSize, x, y, m_scale);
     m_tiles.emplace_back(tile);
 }

@@ -7,6 +7,7 @@
 #include "./FontManager.h"
 #include <SDL_ttf.h>
 #include "./EntityManager.h"
+#include "../../../lib/lua/sol.hpp"
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 /// This is the container for all assets that are to be used in game
@@ -27,6 +28,8 @@ class AssetManager {
         TTF_Font* GetFont(std::string fontId);
 
         void ClearData();
+
+        void AddAsset(sol::table asset);
 };
 
 #endif

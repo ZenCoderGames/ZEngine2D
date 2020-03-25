@@ -10,6 +10,7 @@
 #include "./Game.h"
 #include "./CameraManager.h"
 #include "./CollisionManager.h"
+#include "./Sequence/SequenceManager.h"
 
 class EntityManager;
 class AssetManager;
@@ -34,6 +35,7 @@ class Engine {
         static AssetManager *assetManager;
         static CameraManager *cameraManager;
         static CollisionManager *collisionManager;
+        static SequenceManager *sequenceManager;
 
         int ticksLastFrame = 0;
         bool IsRunning() const { return m_isRunning; }

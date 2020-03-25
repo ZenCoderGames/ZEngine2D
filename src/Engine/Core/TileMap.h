@@ -1,5 +1,5 @@
-#ifndef MAP_H
-#define MAP_H
+#ifndef TILEMAP_H
+#define TILEMAP_H
 
 #include <string>
 #include <vector>

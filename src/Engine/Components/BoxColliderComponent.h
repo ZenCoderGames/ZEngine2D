@@ -19,6 +19,12 @@ class BoxColliderComponent: public Component {
             m_offsetY = offsetY;
         }
 
+        Component * clone() override {
+            BoxColliderComponent* newComponent = new BoxColliderComponent(m_boxCollider->tag, m_offsetX, m_offsetY,
+                                                                            m_boxCollider->rect.w, m_boxCollider->rect.h);
+            return newComponent;
+        }
+
         static BoxColliderComponent* Generate(sol::table paramsTable) {
             BoxColliderComponent* component = new BoxColliderComponent(paramsTable["tag"], paramsTable["offsetX"], paramsTable["offsetY"], paramsTable["width"], paramsTable["height"]);
             return component;

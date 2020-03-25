@@ -6,6 +6,10 @@
 #include <SDL.h>
 #include <map>
 #include "../Utils/Macros.h"
+#include "../../../lib/json/json.hpp"
+#include <fstream>
+
+using json = nlohmann::json;
 
 class SpriteAnimationComponent: public Component {
     private:
@@ -18,26 +22,71 @@ class SpriteAnimationComponent: public Component {
         bool m_isPlaying;
         bool m_isLooping;
         Uint32 m_animStartTime;
+        float m_currentTime;
+
+        int m_totalFrames;
+        float m_speed;
+
+        int m_sizeW, m_sizeH;
+
+        struct FrameData {
+        public:
+            int x, y, w, h;
+            int sizeW, sizeH;
+            int duration;
+
+            FrameData(json j) {
+                json frame = j["frame"];
+                x = frame["x"].get<int>();
+                y = frame["y"].get<int>();
+                w = frame["w"].get<int>();
+                h = frame["h"].get<int>();
+
+                json sourceSize = j["sourceSize"];
+                sizeW = sourceSize["w"].get<int>();
+                sizeH = sourceSize["h"].get<int>();
+
+                duration = j["duration"].get<int>();
+            }
+        };
+        std::vector<FrameData*> m_frameDataList;
+
+        // change later
+        std::string m_spriteSheetInfoFile;
+
     public:
-        SpriteAnimationComponent(int totalFrames, int speed, bool isDirectional=false) {
-            if(isDirectional) {
-                Animation *downAnimation = new Animation("Down", 0, totalFrames, speed);
-                Animation *rightAnimation = new Animation("Right", 1, totalFrames, speed);
-                Animation *leftAnimation = new Animation("Left", 2, totalFrames, speed);
-                Animation *upAnimation = new Animation("Up", 3, totalFrames, speed);
-                m_animationMap.emplace(downAnimation->name, downAnimation);
-                m_animationMap.emplace(rightAnimation->name, rightAnimation);
-                m_animationMap.emplace(leftAnimation->name, leftAnimation);
-                m_animationMap.emplace(upAnimation->name, upAnimation);
-            }
-            else {
-                Animation *defaultAnimation = new Animation("Default", 0, totalFrames, speed);
-                m_animationMap.emplace(defaultAnimation->name, defaultAnimation);
-            }
+        SpriteAnimationComponent(std::string spriteSheetInfoFile, float animationSpeed, bool loop) {
+            m_spriteSheetInfoFile = spriteSheetInfoFile;
+
+            std::ifstream i(spriteSheetInfoFile);
+            json j;
+            i >> j;
+
+            // Get Frame Data
+            json frames = j["frames"];
+            for (auto& elem : frames)
+                m_frameDataList.push_back(new FrameData(elem));
+
+            // Get Width/Height of File
+            json meta = j["meta"];
+            json size = meta["size"];
+            m_sizeW = size["w"].get<int>();
+            m_sizeH = size["h"].get<int>();
+
+            m_speed = animationSpeed;
+            m_isLooping = loop;
+
+            Animation *defaultAnimation = new Animation("Default", 0, m_frameDataList.size(), m_speed);
+            m_animationMap.emplace(defaultAnimation->name, defaultAnimation);
+        }
+
+        Component * clone() override {
+            SpriteAnimationComponent* newComponent = new SpriteAnimationComponent(m_spriteSheetInfoFile, m_speed, m_isLooping);
+            return newComponent;
         }
 
         static SpriteAnimationComponent* Generate(sol::table paramsTable) {
-            SpriteAnimationComponent* component = new SpriteAnimationComponent(paramsTable["totalFrames"], paramsTable["animationSpeed"], paramsTable["isDirectional"]);
+            SpriteAnimationComponent* component = new SpriteAnimationComponent(paramsTable["spriteSheetInfoFile"], paramsTable["animationSpeed"], paramsTable["loop"]);
             return component;
         }
 
@@ -48,6 +97,8 @@ class SpriteAnimationComponent: public Component {
             m_isPlaying = false;
             m_currentAnim = nullptr;
             m_currentIdx = 0;
+
+            Play(m_isLooping);
         }
 
         void Play(bool isLooping) {
@@ -80,18 +131,28 @@ class SpriteAnimationComponent: public Component {
 
         void Update(float deltaTime) override {
             if(m_isPlaying) {
-                int frameCount = (SDL_GetTicks()-m_animStartTime) / m_currentAnim->speed;
-                // horizontal represents the animated frames
-                int x = m_spriteComponent->GetWidth() * static_cast<int>(frameCount % m_currentAnim->totalFrames);
-
-                // vertical represents the section of the sprite sheet
-                int y = m_currentIdx * m_spriteComponent->GetHeight();
-                m_spriteComponent->ModifySrcPos(x, y);
-
-                if(!m_isLooping) {
-                    if(frameCount>=m_currentAnim->totalFrames) {
+                int timeInMillisecondsSinceStart = (SDL_GetTicks()-m_animStartTime) * m_currentAnim->speed;
+                int frameCount = 0;
+                int totalDuration = 0;
+                for (auto& frameData : m_frameDataList) {
+                    totalDuration += frameData->duration;
+                    if(totalDuration>timeInMillisecondsSinceStart) {
+                        break;
+                    }
+                    frameCount++;
+                }
+                if(frameCount>=m_currentAnim->totalFrames) {
+                    if(!m_isLooping) {
                         m_isPlaying = false;
                     }
+                    else {
+                        m_animStartTime = SDL_GetTicks();
+                    }
+                }
+                else {
+                    int x = m_frameDataList[frameCount]->x;
+                    int y = m_frameDataList[frameCount]->y;
+                    m_spriteComponent->ModifySrcPos(x, y);
                 }
             }
         }

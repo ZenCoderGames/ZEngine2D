@@ -10,6 +10,7 @@ SDL_Renderer* Engine::renderer;
 AssetManager* Engine::assetManager = new AssetManager(entityManager);
 CameraManager* Engine::cameraManager = new CameraManager(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
 CollisionManager* Engine::collisionManager = new CollisionManager();
+SequenceManager* Engine::sequenceManager = new SequenceManager();
 
 Engine::Engine(Game *game):m_game(game) {
     this->m_isRunning = false;
@@ -81,6 +82,8 @@ void Engine::Update() {
     m_game->Update(deltaTime);
 
     collisionManager->Update();
+
+    sequenceManager->Update();
 }
 
 void Engine::Render() {

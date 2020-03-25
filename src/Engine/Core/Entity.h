@@ -34,6 +34,7 @@ class Entity {
         void Render();
         void Destroy();
         bool IsActive() const { return m_isActive; }
+        void SetActive(bool val) { m_isActive = val; }
         LAYER GetLayer() const { return m_layer; }
         std::string GetId() { return m_id; }
 
@@ -62,6 +63,10 @@ class Entity {
         template<typename T>
         bool HasComponent() {
             return m_componentMap[&typeid(T)]!=nullptr;
+        }
+
+        std::vector<Component*> GetAllComponents() const {
+            return m_components;
         }
 
         void PrintAllComponents() const {

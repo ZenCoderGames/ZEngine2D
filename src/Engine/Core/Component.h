@@ -18,6 +18,8 @@ class Component {
         virtual void Update(float deltaTime) {}
         virtual void Render() {}
         virtual void Destroy() {}
+
+        virtual Component* clone() { return this; }
 };
 
 #endif

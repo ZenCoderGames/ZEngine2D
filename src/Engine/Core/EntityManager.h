@@ -24,9 +24,11 @@ class EntityManager {
         bool IsEmpty() const { return m_entities.size()==0; }
         void Clear();
 
-        Entity& AddEntity(std::string entityId, LAYER layer);
+        Entity* AddEntity(std::string entityId, LAYER layer, bool isActive=true);
+        void RemoveEntity(Entity* entity);
         Entity* GetEntity(std::string entityId);
         std::vector<Entity*> GetEntitiesByLayer(LAYER layer) const;
+        Entity* DuplicateEntity(std::string sourceEntityId, std::string newEntityId, bool isActive=true);
 };
 
 #endif

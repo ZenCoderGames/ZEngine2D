@@ -11,9 +11,9 @@ class Animation {
         std::string name;
         unsigned int index;
         unsigned int totalFrames;
-        unsigned int speed;
+        float speed;
 
-        Animation(std::string name, int index, int totalFrames, int speed);
+        Animation(std::string name, int index, int totalFrames, float speed);
 };
 
 #endif

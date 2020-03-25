@@ -25,4 +25,7 @@ void Entity::Destroy() {
 
     for(auto& component: m_components)
         component->Destroy();
+
+    m_components.clear();
+    m_componentMap.clear();
 }

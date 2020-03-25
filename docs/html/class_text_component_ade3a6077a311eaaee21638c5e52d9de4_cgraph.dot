@@ -5,5 +5,5 @@ digraph "TextComponent::Render"
   rankdir="LR";
   Node1 [label="TextComponent::Render",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
   Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node2 [label="FontManager::Draw",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_font_manager.html#a13e93e6339566daa7ea63e63fc28d682"];
+  Node2 [label="FontManager::Update",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_font_manager.html#a13e93e6339566daa7ea63e63fc28d682"];
 }

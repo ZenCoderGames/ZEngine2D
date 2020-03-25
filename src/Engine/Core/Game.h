@@ -18,6 +18,7 @@ class Game {
         virtual void Initialize();
     public:
         void Start();
+        void LoadLua(const char* luaScript, const char* tableName);
         virtual void ProcessInput(SDL_Event event);
         virtual void Update(float deltaTime) {}
         void Quit();

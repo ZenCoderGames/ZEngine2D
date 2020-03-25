@@ -82,7 +82,7 @@ void TestGame::Initialize() {
             sol::table entity = entityList[entityIndex];
             std::string name = entity["name"];
             LAYER layer = static_cast<LAYER>(static_cast<int>(entity["layer"]));
-            auto& newEntity(Engine::entityManager->AddEntity(name, layer));
+            auto newEntity(Engine::entityManager->AddEntity(name, layer));
             
             sol::table components = entity["components"];
             unsigned int componentIndex = 0;
@@ -92,9 +92,9 @@ void TestGame::Initialize() {
                     break;
                 }
                 else {
-                    Component* newComponent = ComponentManager::GetComponent(&newEntity, components[componentIndex]);
+                    Component* newComponent = ComponentManager::GetComponent(newEntity, components[componentIndex]);
                     if(newComponent!=nullptr) {
-                        newEntity.AddComponent(newComponent);
+                        newEntity->AddComponent(newComponent);
                     }
                 }
                 componentIndex++;

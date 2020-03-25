@@ -18,6 +18,11 @@ class ProjectileComponent: public Component {
             m_loop = loop;
         }
 
+        Component * clone() override {
+            ProjectileComponent* newComponent = new ProjectileComponent(m_speed, m_angle, m_range, m_loop);
+            return newComponent;
+        }
+
         static ProjectileComponent* Generate(sol::table paramsTable) {
             ProjectileComponent* component = new ProjectileComponent(paramsTable["speed"], paramsTable["angle"], paramsTable["range"], paramsTable["loop"]);
             return component;

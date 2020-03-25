@@ -3,6 +3,13 @@
 
 #include "./Entity.h"
 #include "../../../lib/lua/sol.hpp"
+#include "../Components/TransformComponent.h"
+#include "../Components/SpriteComponent.h"
+#include "../Components/SpriteAnimationComponent.h"
+#include "../Components/BoxColliderComponent.h"
+#include "../Components/ProjectileComponent.h"
+#include "../Components/TextComponent.h"
+#include "../Components/TileComponent.h"
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 /// Helper class that creates all components
@@ -26,6 +33,12 @@ class ComponentManager {
             }
             else if(type=="projectile") {
                 newComponent = ProjectileComponent::Generate(componentTable["params"]);
+            }
+            else if(type=="text") {
+                newComponent = TextComponent::Generate(componentTable["params"]);
+            }
+            else if(type=="tile") {
+                newComponent = TileComponent::Generate(componentTable["params"]);
             }
 
             return newComponent;

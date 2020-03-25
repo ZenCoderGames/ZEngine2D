@@ -1,11 +1,11 @@
 
 
 #include <iostream>
-#include "./TestGame.h"
+#include "./Tetris/Tetris.h"
 
 int main(int argc, char *args[]) {
-    
-    TestGame *game = new TestGame();
+
+    auto *game = new Tetris();
     game->Start();
 
     return 0;
