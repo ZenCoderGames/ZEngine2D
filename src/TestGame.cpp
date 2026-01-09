@@ -21,7 +21,7 @@ void TestGame::Initialize() {
 
     int levelNumber = 1;
     std::string levelName = "Level" + std::to_string(levelNumber);
-    m_lua.script_file("../assets/scripts/" + levelName + ".lua");
+    m_lua.script_file("../../assets/scripts/" + levelName + ".lua");
     sol::table levelData = m_lua[levelName];
 
     /*********************************************/
@@ -158,11 +158,10 @@ void TestGame::ProcessInput(SDL_Event event) {
         }
     }
 
-    if(chopperAnimation==nullptr)
-        return;
-
     if(inputHor.x==0 && inputHor.y==0 && inputVert.x==0 && inputVert.y==0) {
-        chopperAnimation->Stop();
+        if(chopperAnimation!=nullptr)
+            chopperAnimation->Stop();
+        
         chopperTransform->velocity.x = 0;
         chopperTransform->velocity.y = 0;
     }
@@ -170,15 +169,21 @@ void TestGame::ProcessInput(SDL_Event event) {
         bool isPlayingAnimThisFrame = false;
 
         if(inputVert.x>0 && inputVert.x>inputVert.y) {
-            if(!chopperAnimation->IsPlaying("Up"))
-                chopperAnimation->Play("Up", true);
+            if(chopperAnimation!=nullptr)
+                if(!chopperAnimation->IsPlaying("Up"))
+                    chopperAnimation->Play("Up", true);
+            else
+                chopperTransform->rotation = 180;
 
             chopperTransform->velocity.y = -playerSpeed;
             isPlayingAnimThisFrame = true;
         }
         else if(inputVert.y>0 && inputVert.y>inputVert.x) {
-            if(!chopperAnimation->IsPlaying("Down"))
-                chopperAnimation->Play("Down", true);
+            if(chopperAnimation!=nullptr)
+                if(!chopperAnimation->IsPlaying("Down"))
+                    chopperAnimation->Play("Down", true);
+            else
+                chopperTransform->rotation = 0;
 
             chopperTransform->velocity.y = playerSpeed;
             isPlayingAnimThisFrame = true;
@@ -188,14 +193,20 @@ void TestGame::ProcessInput(SDL_Event event) {
         }
 
         if(inputHor.x>0 && inputHor.x>inputHor.y) {
-            if(!isPlayingAnimThisFrame && !chopperAnimation->IsPlaying("Left"))
-                chopperAnimation->Play("Left", true);
+            if(chopperAnimation!=nullptr)
+                if(!isPlayingAnimThisFrame && !chopperAnimation->IsPlaying("Left"))
+                    chopperAnimation->Play("Left", true);
+            else
+                chopperTransform->rotation = -90;
 
             chopperTransform->velocity.x = -playerSpeed;
         }
         else if(inputHor.y>0 && inputHor.y>inputHor.x) {
-            if(!isPlayingAnimThisFrame && !chopperAnimation->IsPlaying("Right"))
-                chopperAnimation->Play("Right", true);
+            if(chopperAnimation!=nullptr)
+                if(!isPlayingAnimThisFrame && !chopperAnimation->IsPlaying("Right"))
+                    chopperAnimation->Play("Right", true);
+            else
+                chopperTransform->rotation = 90;
  
             chopperTransform->velocity.x = playerSpeed;
         }

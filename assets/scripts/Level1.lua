@@ -1,18 +1,18 @@
 Level1 = {
     assets = {
-        [0] = { type="texture", id = "terrain-texture-day", file = "../assets/tilemaps/jungle.png" },
-        [1] = { type="texture", id = "terrain-texture-night", file = "../assets/tilemaps/jungle-night.png" },
-        [2] = { type="texture", id = "chopper-texture", file = "../assets/images/chopper-spritesheet.png" },
-        [3] = { type="texture", id = "tank-texture-big-left", file = "../assets/images/tank-big-left.png" },
-        [4] = { type="texture", id = "projectile-texture", file = "../assets/images/bullet-enemy.png" },
-        [5] = { type="font", id = "charriot-font", file = "../assets/fonts/charriot.ttf", fontSize = 14 },
-        [6] = { type="texture", id = "start-texture", file = "../assets/images/start.png" },
-        [7] = { type="texture", id = "tank-big-right-texture", file = "../assets/images/tank-big-right.png" },
-        [8] = { type="texture", id = "projectile-texture", file = "../assets/images/bullet-enemy.png" }
+        [0] = { type="texture", id = "terrain-texture-day", file = "../../assets/tilemaps/jungle.png" },
+        [1] = { type="texture", id = "terrain-texture-night", file = "../../assets/tilemaps/jungle-night.png" },
+        [2] = { type="texture", id = "chopper-texture", file = "../../assets/images/chopper-spritesheet.png" },
+        [3] = { type="texture", id = "tank-texture-big-left", file = "../../assets/images/tank-big-left.png" },
+        [4] = { type="texture", id = "projectile-texture", file = "../../assets/images/bullet-enemy.png" },
+        [5] = { type="font", id = "charriot-font", file = "../../assets/fonts/charriot.ttf", fontSize = 14 },
+        [6] = { type="texture", id = "start-texture", file = "../../assets/images/start.png" },
+        [7] = { type="texture", id = "tank-big-right-texture", file = "../../assets/images/tank-big-right.png" },
+        [8] = { type="texture", id = "projectile-texture", file = "../../assets/images/bullet-enemy.png" }
     },
     map = {
         textureAssetId = "terrain-texture-night",
-        file = "../assets/tilemaps/jungle.map",
+        file = "../../assets/tilemaps/jungle.map",
         scale = 2,
         tileSize = 32,
         mapSizeX = 25,
@@ -43,14 +43,6 @@ Level1 = {
                     }
                 },
                 [2] = {
-                    type = "spriteAnimation",
-                    params = {
-                        totalFrames = 2,
-                        animationSpeed = 90,
-                        isDirectional = true
-                    }
-                },
-                [3] = {
                     type = "boxCollider",
                     params = {
                         tag = "PLAYER",

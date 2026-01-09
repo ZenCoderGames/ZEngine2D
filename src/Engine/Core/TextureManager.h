@@ -9,7 +9,7 @@
 class TextureManager {
     public:
         static SDL_Texture* LoadTexture(const char* filePath);
-        static void Draw(SDL_Texture* texture, SDL_Rect srcRect, SDL_Rect dstRect, SDL_RendererFlip flip);
+        static void Draw(SDL_Texture* texture, SDL_Rect srcRect, SDL_Rect dstRect, float angle, SDL_RendererFlip flip);
 };
 
 #endif

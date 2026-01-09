@@ -51,7 +51,7 @@ class TileComponent: public Component {
         }
 
         void Render() override {
-            TextureManager::Draw(m_texture, m_src, m_dst, m_flip);
+            TextureManager::Draw(m_texture, m_src, m_dst, 0, m_flip);
         }
 };
 

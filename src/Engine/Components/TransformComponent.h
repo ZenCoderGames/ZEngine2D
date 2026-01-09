@@ -13,21 +13,22 @@ class TransformComponent: public Component {
         float scale;
         float rotation;
 
-        TransformComponent(int posX, int posY, int velX, int velY, float scale=1):Component() {
+        TransformComponent(int posX, int posY, int velX, int velY, float rotation=0, float scale=1):Component() {
             position = glm::vec2(posX, posY);
             velocity = glm::vec2(velX, velY);
+            this->rotation = rotation;
             this->scale = scale;
         }
 
         Component * clone() override {
-            TransformComponent* newComponent = new TransformComponent(position.x, position.y, velocity.x, velocity.y, scale);
+            TransformComponent* newComponent = new TransformComponent(position.x, position.y, velocity.x, velocity.y, rotation, scale);
             return newComponent;
         }
 
         static TransformComponent* Generate(sol::table paramsTable) {
             TransformComponent* component = new TransformComponent(paramsTable["position"]["x"], 
                                                                     paramsTable["position"]["y"], 
-                                                                    0, 0, paramsTable["scale"]);
+                                                                    0, 0, 0, paramsTable["scale"]);
             return component;
         }
 

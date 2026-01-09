@@ -20,6 +20,7 @@ class SpriteComponent: public Component {
         int m_height;
         bool m_isFixed;
         bool m_flipX, m_flipY;
+        float m_rotation;
         int m_tint[3];
         int m_alpha;
     public:
@@ -41,6 +42,7 @@ class SpriteComponent: public Component {
             m_tint[1] = 255;
             m_tint[2] = 255;
             m_alpha = 255;
+            m_rotation = 0;
         }
 
         Component * clone() override {
@@ -76,12 +78,13 @@ class SpriteComponent: public Component {
             m_dst.y = static_cast<int>(m_transformComponent->position.y) - (m_isFixed ? 0: Engine::cameraManager->GetPosY());
             m_dst.w = m_width * m_transformComponent->scale;
             m_dst.h = m_height * m_transformComponent->scale;
+            m_rotation = m_transformComponent->rotation;
         }
 
         void Render() override {
             SDL_SetTextureColorMod(m_texture, m_tint[0], m_tint[1], m_tint[2]);
             SDL_SetTextureAlphaMod(m_texture, m_alpha);
-            TextureManager::Draw(m_texture, m_src, m_dst, flip);
+            TextureManager::Draw(m_texture, m_src, m_dst, m_rotation, flip);
             SDL_SetTextureColorMod(m_texture, 255, 255, 255);
             SDL_SetTextureAlphaMod(m_texture, 1);
         }

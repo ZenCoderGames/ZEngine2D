@@ -9,6 +9,6 @@ SDL_Texture* TextureManager::LoadTexture(const char* filePath) {
     return texture;
 }
 
-void TextureManager::Draw(SDL_Texture* texture, SDL_Rect srcRect, SDL_Rect dstRect, SDL_RendererFlip flip) {
-    SDL_RenderCopyEx(Engine::renderer, texture, &srcRect, &dstRect, 0.0, NULL, flip);
+void TextureManager::Draw(SDL_Texture* texture, SDL_Rect srcRect, SDL_Rect dstRect, float angle, SDL_RendererFlip flip) {
+    SDL_RenderCopyEx(Engine::renderer, texture, &srcRect, &dstRect, angle, NULL, flip);
 }

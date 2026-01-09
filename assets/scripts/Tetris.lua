@@ -212,9 +212,9 @@ Tetris = {
                          height = 32,
                          fixed = false,
                          tint = {
-                             r = 128,
+                             r = 204,
                              g = 0,
-                             b = 128
+                             b = 204
                          }
                      }
                  }
@@ -269,9 +269,9 @@ Tetris = {
                          height = 32,
                          fixed = false,
                          tint = {
-                             r = 129,
-                             g = 69,
-                             b = 19
+                             r = 204,
+                             g = 102,
+                             b = 0
                          }
                      }
                  }
