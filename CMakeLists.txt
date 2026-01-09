@@ -1,26 +1,22 @@
 cmake_minimum_required(VERSION 3.14)
 project(ZCoreEngine)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 
 # Tells CMake that the find scripts are inside inside subfolder /cmake
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${PROJECT_SOURCE_DIR}/cmake)
 
 # Asks CMake to find the SDL libraries in our system
-find_package(SDL2 REQUIRED)
-find_package(SDL2_image REQUIRED)
-find_package(SDL2_ttf REQUIRED)
-find_package(Lua51 REQUIRED)
+# Using CONFIG mode with vcpkg
+find_package(SDL2 CONFIG REQUIRED)
+find_package(SDL2_image CONFIG REQUIRED)
+find_package(SDL2_ttf CONFIG REQUIRED)
+find_package(SDL2_mixer CONFIG REQUIRED)
 
-# Asks CMake to include the library folders during build
-include_directories(
-        ${SDL2_INCLUDE_DIR}
-        ${SDL2_IMAGE_INCLUDE_DIR}
-        ${SDL2_TTF_INCLUDE_DIR}
-        ${SDL2_MIXER_INCLUDE_DIR})
-
-# Include lua
-include_directories(/usr/local/include ${LUA_INCLUDE_DIR})
+# Use local Lua 5.1 build
+set(LUA_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/lib/lua")
+set(LUA_LIBRARY "${PROJECT_SOURCE_DIR}/lib/lua/lua5.1.lib")
+include_directories(${LUA_INCLUDE_DIR})
 add_subdirectory(${PROJECT_SOURCE_DIR}/lib/glm)
 
 # Recursively add files
@@ -40,13 +36,31 @@ add_executable(ZCoreEngine
         ${SRC_FILES}
         ${LIB_FILES})
 
+# Set console subsystem for Debug builds to see output
+if(MSVC)
+    set_target_properties(ZCoreEngine PROPERTIES
+        LINK_FLAGS_DEBUG "/SUBSYSTEM:CONSOLE"
+        LINK_FLAGS_RELEASE "/SUBSYSTEM:WINDOWS /ENTRY:mainCRTStartup"
+    )
+endif()
+
 # Asks CMake to link against the libraries during build
-target_link_libraries(ZCoreEngine
-        ${SDL2_LIBRARY}
-        ${SDL2_IMAGE_LIBRARIES}
-        ${SDL2_TTF_LIBRARIES}
-        ${SDL2_MIXER_LIBRARIES}
-        ${LUA_LIBRARIES})
+# Using vcpkg CMake targets and local Lua
+target_link_libraries(ZCoreEngine PRIVATE
+        $<TARGET_NAME_IF_EXISTS:SDL2::SDL2main>
+        $<IF:$<TARGET_EXISTS:SDL2::SDL2>,SDL2::SDL2,SDL2::SDL2-static>
+        $<IF:$<TARGET_EXISTS:SDL2_image::SDL2_image>,SDL2_image::SDL2_image,SDL2_image::SDL2_image-static>
+        $<IF:$<TARGET_EXISTS:SDL2_ttf::SDL2_ttf>,SDL2_ttf::SDL2_ttf,SDL2_ttf::SDL2_ttf-static>
+        $<IF:$<TARGET_EXISTS:SDL2_mixer::SDL2_mixer>,SDL2_mixer::SDL2_mixer,SDL2_mixer::SDL2_mixer-static>
+        ${LUA_LIBRARY})
+
+# Copy DLL files to output directory after build
+add_custom_command(TARGET ZCoreEngine POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+    $<TARGET_RUNTIME_DLLS:ZCoreEngine>
+    $<TARGET_FILE_DIR:ZCoreEngine>
+    COMMAND_EXPAND_LISTS
+)
 
 # make executable
 install(TARGETS ZCoreEngine DESTINATION bin)

@@ -20,12 +20,14 @@ class Tetris: public Game {
         Piece* m_currentPiece;
         float m_gravityTimer;
         bool m_isPaused;
+        bool m_isGameOver;
         Entity* m_textCounter;
         TextComponent* m_textCounterComponent;
         int m_score;
 
         void ClearLines();
         void ClearLineSequenceCompleted();
+        void RestartGame();
     protected:
         void Initialize() override;
     public:
@@ -59,7 +61,7 @@ class Tetris: public Game {
 
         void AddToScore(int val) {
             m_score += val;
-            m_textCounterComponent->ModifyText("Score: " + std::to_string(m_score));
+            m_textCounterComponent->ModifyText("Score: " + std::to_string(m_score) + "\n\nControls: Arrow Keys or Spacebar.");
         }
 };
 

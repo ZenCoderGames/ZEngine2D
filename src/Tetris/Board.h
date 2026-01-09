@@ -62,11 +62,22 @@ public:
     }
 
     bool Set(int startRow, int startCol, std::vector<Cell*> cells) {
+        bool hasBlocksAboveGrid = false;
         for(int i=0; i<cells.size(); ++i) {
             int row = startRow + cells[i]->r;
             int col = startCol + cells[i]->c;
-            m_grid[row][col]->SetBlock(cells[i]->block);
+
+            // Check if any cells are above the grid (game over condition)
+            if(row <= 0) {
+                hasBlocksAboveGrid = true;
+            }
+
+            // Add bounds checking to prevent crash when game ends
+            if(row >= 0 && row < m_rows && col >= 0 && col < m_cols) {
+                m_grid[row][col]->SetBlock(cells[i]->block);
+            }
         }
+        return hasBlocksAboveGrid;
     }
 
     int GetTotalLinesToClear() {
@@ -127,6 +138,12 @@ public:
     void ClearRow(int r) {
         for(int c=0; c<COLS; ++c) {
             m_grid[r][c]->Clear();
+        }
+    }
+
+    void ClearBoard() {
+        for(int r=0; r<m_rows; ++r) {
+            ClearRow(r);
         }
     }
 

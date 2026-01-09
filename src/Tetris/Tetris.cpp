@@ -11,7 +11,7 @@
 void Tetris::Initialize() {
     Game::Initialize();
 
-    LoadLua("../assets/scripts/Tetris.lua", "Tetris");
+    LoadLua("../../assets/scripts/Tetris.lua", "Tetris");
 
     DrawWall("left", 448, 32, ROWS, false);
     DrawWall("bot", 448, 672, COLS+2, true);
@@ -21,12 +21,18 @@ void Tetris::Initialize() {
     m_board->DrawGrid();
 
     srand(time(NULL));
+    m_score = 0;
+    m_isGameOver = false;
+    m_isPaused = false;
+
     CreateNewPiece();
-    m_currentPiece->MoveDown();
+    if(!m_isGameOver && m_currentPiece != nullptr) {
+        m_currentPiece->MoveDown();
+    }
 
     m_gravityTimer = 0;
     m_textCounter = Engine::entityManager->AddEntity("scoreCounter", LAYER_UI, true);
-    m_textCounterComponent = new TextComponent("charriot-font", "Score: 0", 100, 100, {255, 255, 255});
+    m_textCounterComponent = new TextComponent("charriot-font", "Score: 0", 100, 100, {255, 255, 255}, 300);
     m_textCounter->AddComponent(m_textCounterComponent);
 }
 
@@ -55,6 +61,12 @@ void Tetris::DrawWall(std::string name, int x, int y, int count, bool isHorizont
 }
 
 void Tetris::Update(float deltaTime) {
+    // Don't update if game is over
+    if(m_isGameOver) {
+        m_board->Draw();
+        return;
+    }
+
     if(m_isPaused) {
         m_gravityTimer = 0;
     }
@@ -70,10 +82,21 @@ void Tetris::Update(float deltaTime) {
             m_currentPiece->Update();
 
             if (m_currentPiece->HasBeenPlaced()) {
-                m_board->Set(m_currentPiece->GetRow(), m_currentPiece->GetCol(), m_currentPiece->GetCells());
+                // Place the piece on the board
+                bool hasBlocksAboveGrid = m_board->Set(m_currentPiece->GetRow(), m_currentPiece->GetCol(), m_currentPiece->GetCells());
+
                 delete m_currentPiece;
                 m_currentPiece = nullptr;
-                CreateNewPiece();
+
+                // Check if placed blocks crossed the top - game over
+                if(hasBlocksAboveGrid) {
+                    m_isGameOver = true;
+                    if(m_textCounterComponent != nullptr) {
+                        m_textCounterComponent->ModifyText("End Game - Score: " + std::to_string(m_score) + "\n\nPress 'R' to Restart.");
+                    }
+                } else {
+                    CreateNewPiece();
+                }
             }
 
             int numLinesToClear = m_board->GetTotalLinesToClear();
@@ -104,9 +127,16 @@ void Tetris::ClearLineSequenceCompleted() {
 void Tetris::ProcessInput(SDL_Event event) {
     Game::ProcessInput(event);
 
-    if(m_currentPiece!= nullptr) {
-        switch (event.type) {
-            case SDL_KEYDOWN: {
+    switch (event.type) {
+        case SDL_KEYDOWN: {
+            // Handle restart when game is over
+            if (m_isGameOver && event.key.keysym.sym == SDLK_r) {
+                RestartGame();
+                return;
+            }
+
+            // Normal game controls
+            if(m_currentPiece!= nullptr) {
                 if (event.key.keysym.sym == SDLK_LEFT) {
                     m_currentPiece->MoveLeft();
                 }
@@ -125,13 +155,39 @@ void Tetris::ProcessInput(SDL_Event event) {
                 if (event.key.keysym.sym == SDLK_p) {
                     m_isPaused = !m_isPaused;
                 }
-                break;
             }
-            default: {
-                break;
-            }
+            break;
+        }
+        default: {
+            break;
         }
     }
+}
+
+void Tetris::RestartGame() {
+    // Clear the board
+    m_board->ClearBoard();
+
+    // Reset game state
+    m_score = 0;
+    m_isGameOver = false;
+    m_isPaused = false;
+    m_gravityTimer = 0;
+
+    // Delete current piece if it exists
+    if(m_currentPiece != nullptr) {
+        delete m_currentPiece;
+        m_currentPiece = nullptr;
+    }
+
+    // Create new piece and start game
+    CreateNewPiece();
+    if(m_currentPiece != nullptr) {
+        m_currentPiece->MoveDown();
+    }
+
+    // Update score text
+    m_textCounterComponent->ModifyText("Score: 0 \n\nControls: Arrow Keys or Spacebar.");
 }
 
 Tetris::~Tetris() {

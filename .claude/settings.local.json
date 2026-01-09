@@ -1,0 +1,37 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cmake:*)",
+      "Bash(winget:*)",
+      "Bash(choco:*)",
+      "Bash(vcpkg version:*)",
+      "Bash(git clone:*)",
+      "Bash(./bootstrap-vcpkg.bat)",
+      "Bash(./vcpkg install:*)",
+      "Bash(./vcpkg list:*)",
+      "Bash(\"/c/Program Files/CMake/bin/cmake.exe\" --version)",
+      "Bash(\"/c/Program Files/CMake/bin/cmake.exe\" -S . -B build -DCMAKE_BUILD_TYPE=Debug -DCMAKE_TOOLCHAIN_FILE=C:/Navin/Development/vcpkg/scripts/buildsystems/vcpkg.cmake)",
+      "Bash(\"/c/Program Files/CMake/bin/cmake.exe\" --build build --config Debug)",
+      "Bash(\"/c/Program Files/CMake/bin/cmake.exe\":*)",
+      "Bash(\"/c/Program Files/CMake/bin/cmake.exe\" -LA)",
+      "Bash(\"/c/Program Files/CMake/bin/cmake.exe\" --build build --config Debug -- /m)",
+      "Bash(curl:*)",
+      "Bash(powershell.exe -Command \"Expand-Archive -Path lua51-win64.zip -DestinationPath lua51 -Force\")",
+      "Bash(powershell.exe -Command \"Expand-Archive -Path lua51-msvc.zip -DestinationPath lua51-msvc -Force\")",
+      "Bash(ls:*)",
+      "Bash(./ZCoreEngine.exe)",
+      "Bash(timeout:*)",
+      "Bash(echo:*)",
+      "Bash(dumpbin:*)",
+      "Bash(powershell.exe -Command \"Get-Item SDL2.dll | Select-Object Name, Length\")",
+      "Bash(powershell.exe -Command \"Start-Process -FilePath ''./ZCoreEngine.exe'' -Wait -RedirectStandardOutput ''output.txt'' -RedirectStandardError ''error.txt''; Get-Content -Path ''error.txt''\")",
+      "Bash(powershell.exe -Command \"$dll = [System.Reflection.Assembly]::LoadFile\\(\\(Resolve-Path ''ZCoreEngine.exe''\\).Path\\); $dll.GetType\\(\\)\")",
+      "Bash(taskkill:*)",
+      "Bash(tasklist:*)",
+      "Bash(findstr:*)",
+      "Bash(\"C:/Program Files/CMake/bin/cmake.exe\" --build build --config Debug)",
+      "Bash(.ZCoreEngine.exe)",
+      "Bash(tee:*)"
+    ]
+  }
+}

@@ -1,6 +1,8 @@
 #include "./Game.h"
 
 #include "./ComponentManager.h"
+#include <iostream>
+#include <filesystem>
 
 void Game::Initialize() {
     m_lua.open_libraries(sol::lib::base, sol::lib::os, sol::lib::math);
@@ -36,8 +38,35 @@ void Game::Quit() {
 }
 
 void Game::LoadLua(const char* luaScript, const char* tableName) {
-    m_lua.script_file("../assets/scripts/Tetris.lua");
-    sol::table levelData = m_lua["Tetris"];
+    // Debug: Print current working directory
+    std::cout << "Current working directory: " << std::filesystem::current_path() << std::endl;
+    std::cout << "Attempting to load Lua script: " << luaScript << std::endl;
+
+    // Check if file exists
+    if (!std::filesystem::exists(luaScript)) {
+        std::cerr << "ERROR: Lua script file not found: " << luaScript << std::endl;
+        std::cerr << "Current directory: " << std::filesystem::current_path() << std::endl;
+        throw std::runtime_error("Lua script file not found");
+    }
+
+    try {
+        std::cout << "Loading Lua script..." << std::endl;
+        m_lua.script_file(luaScript);
+        std::cout << "Lua script loaded successfully!" << std::endl;
+    } catch (const sol::error& e) {
+        std::cerr << "Lua script error: " << e.what() << std::endl;
+        std::cerr << "Attempted to load: " << luaScript << std::endl;
+        throw;
+    }
+
+    std::cout << "Accessing table: " << tableName << std::endl;
+    sol::table levelData = m_lua[tableName];
+
+    if (!levelData.valid()) {
+        std::cerr << "ERROR: Table '" << tableName << "' not found in Lua script!" << std::endl;
+        throw std::runtime_error("Lua table not found");
+    }
+    std::cout << "Table accessed successfully!" << std::endl;
 
     /*********************************************/
     /* LOAD ASSETS FROM LUA CONFIG FILE         */

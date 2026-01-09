@@ -1,0 +1,6 @@
+Current working directory: "C:\\Navin\\Development\\ZEngine2D\\bin\\Debug"
+Attempting to load Lua script: ../../assets/scripts/Tetris.lua
+Loading Lua script...
+Lua script loaded successfully!
+Accessing table: Tetris
+Table accessed successfully!

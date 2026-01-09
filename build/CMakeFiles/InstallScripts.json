@@ -1,0 +1,8 @@
+{
+	"InstallScripts" : 
+	[
+		"C:/Navin/Development/ZEngine2D/build/cmake_install.cmake",
+		"C:/Navin/Development/ZEngine2D/build/lib/glm/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

@@ -1,0 +1,43 @@
+{
+    // CMake settings
+    "cmake.sourceDirectory": "${workspaceFolder}",
+    "cmake.buildDirectory": "${workspaceFolder}/build",
+    "cmake.configureOnOpen": false,
+    "cmake.configureArgs": [
+        "-DCMAKE_TOOLCHAIN_FILE=C:/Navin/Development/vcpkg/scripts/buildsystems/vcpkg.cmake"
+    ],
+
+    // C/C++ settings
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+    "C_Cpp.default.cppStandard": "c++14",
+    "C_Cpp.default.intelliSenseMode": "windows-msvc-x64",
+
+    // Files to exclude from explorer
+    "files.exclude": {
+        "**/.git": true,
+        "**/.DS_Store": true,
+        "**/build": false
+    },
+
+    // File associations
+    "files.associations": {
+        "*.h": "cpp",
+        "*.cpp": "cpp",
+        "*.lua": "lua",
+        "CMakeLists.txt": "cmake"
+    },
+
+    // Editor settings for C++
+    "editor.formatOnSave": false,
+    "[cpp]": {
+        "editor.tabSize": 4,
+        "editor.insertSpaces": true
+    },
+    "[c]": {
+        "editor.tabSize": 4,
+        "editor.insertSpaces": true
+    },
+
+    // Terminal settings
+    "terminal.integrated.cwd": "${workspaceFolder}"
+}

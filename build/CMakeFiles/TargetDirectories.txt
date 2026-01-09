@@ -1,0 +1,5 @@
+C:/Navin/Development/ZEngine2D/build/CMakeFiles/ZCoreEngine.dir
+C:/Navin/Development/ZEngine2D/build/CMakeFiles/INSTALL.dir
+C:/Navin/Development/ZEngine2D/build/CMakeFiles/ALL_BUILD.dir
+C:/Navin/Development/ZEngine2D/build/CMakeFiles/ZERO_CHECK.dir
+C:/Navin/Development/ZEngine2D/build/lib/glm/CMakeFiles/INSTALL.dir
